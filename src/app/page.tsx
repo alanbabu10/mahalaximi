@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
+import Machinery from "@/components/Machinery";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Industries from "@/components/Industries";
 import Process from "@/components/Process";
@@ -25,25 +26,28 @@ export default function Home() {
       {/* 4. Our Capabilities (Services) */}
       <Services />
 
-      {/* 5. Why Choose Us */}
+      {/* 5. Our Machinery Showcase */}
+      <Machinery />
+
+      {/* 6. Why Choose Us */}
       <WhyChooseUs />
 
-      {/* 6. Industries We Serve */}
+      {/* 7. Industries We Serve */}
       <Industries />
 
-      {/* 7. Manufacturing Process */}
+      {/* 8. Manufacturing Process */}
       <Process />
 
-      {/* 8. Client Testimonials */}
+      {/* 9. Client Testimonials */}
       <Testimonials />
 
-      {/* 9. Let's Talk Requirements (Navy Inquiry Section) */}
+      {/* 10. Let's Talk Requirements (Navy Inquiry Section) */}
       <ContactCTA />
 
-      {/* 10. Ready to Work With Us Banner */}
+      {/* 11. Ready to Work With Us Banner */}
       <ReadyBanner />
 
-      {/* 11. Navy Blue Footer */}
+      {/* 12. Navy Blue Footer */}
       <Footer />
     </main>
   );

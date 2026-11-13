@@ -3,48 +3,37 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
-interface NavbarProps {
-  activeSection?: string;
-}
-
-export default function Navbar({ activeSection = "home" }: NavbarProps) {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentSection, setCurrentSection] = useState(activeSection);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      const sections = ["home", "about", "services", "industries", "why-us", "contact"];
-      const scrollPosition = window.scrollY + 120;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setCurrentSection(section);
-            break;
-          }
-        }
-      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home", id: "home" },
-    { name: "About", href: "#about", id: "about" },
-    { name: "Services", href: "#services", id: "services" },
-    { name: "Industries", href: "#industries", id: "industries" },
-    { name: "Contact", href: "#contact", id: "contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Industries", href: "/industries" },
+    { name: "Contact", href: "/contact" },
   ];
+
+  const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header
@@ -57,7 +46,7 @@ export default function Navbar({ activeSection = "home" }: NavbarProps) {
           {/* Company Logo Left */}
           <div className="flex-shrink-0 flex items-center">
             <Link
-              href="#home"
+              href="/"
               className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#E51E2A] rounded-xs"
               aria-label="Mahalaxmi Tools & Plastic Industries Home"
             >
@@ -72,7 +61,10 @@ export default function Navbar({ activeSection = "home" }: NavbarProps) {
                 />
               </div>
               <span className="font-bold text-[16px] sm:text-[17px] text-[#080808] tracking-tight leading-tight hidden sm:block">
-                MAHALAXMI<span className="text-[#E51E2A] block text-[11px] font-semibold tracking-wider uppercase">Tools &amp; Plastics</span>
+                MAHALAXMI
+                <span className="text-[#E51E2A] block text-[11px] font-semibold tracking-wider uppercase">
+                  Tools &amp; Plastics
+                </span>
               </span>
             </Link>
           </div>
@@ -83,18 +75,24 @@ export default function Navbar({ activeSection = "home" }: NavbarProps) {
             aria-label="Main Navigation"
           >
             {navLinks.map((link) => {
-              const isActive = currentSection === link.id;
+              const active = isLinkActive(link.href);
               return (
                 <Link
                   key={link.name}
                   href={link.href}
                   className={`text-[15px] font-medium transition-colors duration-150 relative py-1 ${
-                    isActive
+                    active
                       ? "text-[#E51E2A] font-semibold"
                       : "text-[#555555] hover:text-[#080808]"
                   }`}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {active && (
+                    <span
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#E51E2A] rounded-full animate-in fade-in duration-150"
+                      aria-hidden="true"
+                    />
+                  )}
                 </Link>
               );
             })}
@@ -103,10 +101,11 @@ export default function Navbar({ activeSection = "home" }: NavbarProps) {
           {/* Right Action Button */}
           <div className="hidden md:flex items-center">
             <Link
-              href="#contact"
-              className="inline-flex items-center justify-center px-[22px] py-[9px] text-[14px] font-medium text-white bg-[#E51E2A] hover:bg-[#CC1622] rounded-[4px] transition-colors duration-150 shadow-xs focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E51E2A]"
+              href="/contact"
+              className="inline-flex items-center justify-center h-[38px] px-[20px] text-[13.5px] font-medium text-white bg-[#E51E2A] hover:bg-[#CC1622] rounded-[4px] transition-colors duration-150 shadow-xs whitespace-nowrap flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E51E2A] group"
             >
-              Get in touch
+              <span className="whitespace-nowrap">Get in touch</span>
+              <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 flex-shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
 
@@ -115,7 +114,7 @@ export default function Navbar({ activeSection = "home" }: NavbarProps) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-[4px] text-[#555555] hover:text-[#080808] hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-[#E51E2A]"
+              className="inline-flex items-center justify-center p-2 rounded-[4px] text-[#555555] hover:text-[#080808] hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-[#E51E2A] cursor-pointer"
               aria-controls="mobile-menu"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
@@ -137,15 +136,15 @@ export default function Navbar({ activeSection = "home" }: NavbarProps) {
           className="md:hidden border-t border-[#E5E5E5] bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg animate-in fade-in slide-in-from-top-2 duration-150"
         >
           {navLinks.map((link) => {
-            const isActive = currentSection === link.id;
+            const active = isLinkActive(link.href);
             return (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-3 py-2 rounded-[4px] text-base font-medium transition-colors ${
-                  isActive
-                    ? "text-[#E51E2A] bg-red-50/50 font-semibold"
+                  active
+                    ? "text-[#E51E2A] bg-red-50/70 font-semibold"
                     : "text-[#555555] hover:text-[#080808] hover:bg-neutral-50"
                 }`}
               >
@@ -155,7 +154,7 @@ export default function Navbar({ activeSection = "home" }: NavbarProps) {
           })}
           <div className="pt-3 border-t border-[#E5E5E5]/70">
             <Link
-              href="#contact"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-[#E51E2A] hover:bg-[#CC1622] rounded-[4px] transition-colors"
             >

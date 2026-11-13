@@ -50,11 +50,11 @@ export default function About() {
               <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-6 sm:gap-8">
                 {/* Primary Action Button */}
                 <Link
-                  href="#services"
-                  className="inline-flex items-center justify-center px-[22px] py-[13px] text-[15px] font-medium text-white bg-[#E51E2A] hover:bg-[#CC1622] rounded-[4px] transition-colors shadow-xs group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E51E2A]"
+                  href="/about"
+                  className="inline-flex items-center justify-center h-[38px] px-[18px] text-[13.5px] font-medium text-white bg-[#E51E2A] hover:bg-[#CC1622] rounded-[4px] transition-colors shadow-xs whitespace-nowrap flex-shrink-0 group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E51E2A]"
                 >
-                  <span>Learn more about us</span>
-                  <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <span className="whitespace-nowrap">Learn more about us</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 ml-2 flex-shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
 
                 {/* Social Proof: 3 Avatars + Trusted by */}

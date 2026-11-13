@@ -124,7 +124,7 @@ export default function Services() {
             <div className="flex-1 mx-4 h-px bg-[#E5E5E5]" />
 
             <Link
-              href="#contact"
+              href="/services"
               className="inline-flex items-center text-[14px] font-medium text-[#E51E2A] hover:text-[#CC1622] transition-colors whitespace-nowrap"
             >
               <span>view all services</span>

@@ -20,11 +20,11 @@ export default function ReadyBanner() {
               </p>
               <div className="mt-7">
                 <Link
-                  href="#contact"
-                  className="inline-flex items-center justify-center px-[22px] py-[13px] text-[15px] font-medium text-white bg-[#E51E2A] hover:bg-[#CC1622] rounded-[4px] transition-colors shadow-xs group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E51E2A]"
+                  href="/contact"
+                  className="inline-flex items-center justify-center h-[38px] px-[20px] text-[13.5px] font-medium text-white bg-[#E51E2A] hover:bg-[#CC1622] rounded-[4px] transition-colors shadow-xs whitespace-nowrap flex-shrink-0 group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E51E2A]"
                 >
-                  <span>Get in touch</span>
-                  <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <span className="whitespace-nowrap">Get in touch</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 ml-2 flex-shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>
             </ScrollReveal>

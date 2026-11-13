@@ -93,8 +93,8 @@ export default function Industries() {
 
                     {/* Red Square Action Button with Arrow */}
                     <Link
-                      href="#contact"
-                      aria-label={`Inquire about ${ind.title}`}
+                      href="/industries"
+                      aria-label={`Explore ${ind.title}`}
                       className="flex-shrink-0 w-10 h-10 bg-[#E51E2A] hover:bg-[#CC1622] rounded-[4px] flex items-center justify-center text-white transition-colors shadow-xs group"
                     >
                       <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -111,10 +111,10 @@ export default function Industries() {
           <div className="mt-12 pt-4 flex items-center justify-between gap-4">
             <div className="flex-1 h-px bg-[#E5E5E5]" />
             <Link
-              href="#services"
+              href="/industries"
               className="inline-flex items-center text-[14px] font-medium text-[#E51E2A] hover:text-[#CC1622] transition-colors whitespace-nowrap pl-4"
             >
-              <span>view all services</span>
+              <span>explore all industries</span>
               <ArrowUpRight className="w-4 h-4 ml-1" />
             </Link>
           </div>
