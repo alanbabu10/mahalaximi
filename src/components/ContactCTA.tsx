@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { whatsappUrl } from "@/data/company";
 
 export default function ContactCTA() {
   const [submitted, setSubmitted] = useState(false);
@@ -17,6 +18,17 @@ export default function ContactCTA() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // The site has no backend, so the inquiry is handed to WhatsApp, pre-filled.
+    const text = [
+      "New inquiry from the website",
+      `Name: ${formData.fullName}`,
+      `Company: ${formData.company}`,
+      ...(formData.phone ? [`Phone: ${formData.phone}`] : []),
+      `Email: ${formData.email}`,
+      "",
+      formData.requirements.trim(),
+    ].join("\n");
+    window.open(whatsappUrl(text), "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -68,12 +80,14 @@ export default function ContactCTA() {
                       Inquiry Submitted
                     </h4>
                     <p className="mt-2 text-[14px] text-[#555555] max-w-sm mx-auto">
-                      Thank you. Our engineering team has received your inquiry and
-                      will review your project requirements promptly.
+                      Thank you. Your inquiry has opened in WhatsApp. Press send there
+                      and our engineering team will review your requirements promptly.
                     </p>
                     <button
+                      type="button"
                       onClick={() => {
                         setSubmitted(false);
+                        setAgreed(false);
                         setFormData({
                           fullName: "",
                           company: "",

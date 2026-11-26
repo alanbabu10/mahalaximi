@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -13,6 +14,42 @@ import {
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ScrollReveal from "@/components/ScrollReveal";
+import {
+  keralaUnit,
+  mapsEmbedUrl,
+  mapsSearchUrl,
+  mumbaiUnit,
+  whatsappUrl,
+} from "@/data/company";
+
+const subjectOptions = [
+  "Mould Development",
+  "Tools & Dies",
+  "Plastic Components",
+  "CNC Machining",
+  "General Project Inquiry",
+];
+
+// Reads ?service= / ?industry= from links on the Services and Industries pages
+// and pre-fills the form. Kept in its own Suspense boundary so the rest of the
+// page still prerenders.
+function QueryPrefill({
+  onPrefill,
+}: {
+  onPrefill: (subject: string | null, industry: string | null) => void;
+}) {
+  const params = useSearchParams();
+  const service = params.get("service");
+  const industry = params.get("industry");
+
+  useEffect(() => {
+    if (service || industry) {
+      onPrefill(service && subjectOptions.includes(service) ? service : null, industry);
+    }
+  }, [service, industry, onPrefill]);
+
+  return null;
+}
 
 export default function ContactContent() {
   const [formData, setFormData] = useState({
@@ -65,9 +102,33 @@ export default function ContactContent() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handlePrefill = useCallback(
+    (subject: string | null, industry: string | null) => {
+      setFormData((prev) => ({
+        ...prev,
+        subject: subject ?? (industry ? "General Project Inquiry" : prev.subject),
+        message:
+          industry && !prev.message ? `Industry: ${industry}\n\n` : prev.message,
+      }));
+    },
+    []
+  );
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
+
+    // The site has no backend, so the inquiry is handed to WhatsApp, pre-filled.
+    const text = [
+      "New inquiry from the website",
+      `Name: ${formData.fullName}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      `Subject: ${formData.subject}`,
+      "",
+      formData.message.trim(),
+    ].join("\n");
+    window.open(whatsappUrl(text), "_blank", "noopener,noreferrer");
 
     setIsSubmitting(true);
     setTimeout(() => {
@@ -134,14 +195,38 @@ export default function ContactContent() {
                       </div>
                       <div>
                         <span className="block text-[11px] font-bold uppercase tracking-wider text-[#777777]">
-                          Corporate &amp; Works
+                          {keralaUnit.unit} · Works, Kerala
                         </span>
-                        <p className="text-[13.5px] font-medium text-[#080808] mt-0.5">
-                          Mahalaxmi Tools &amp; Plastic Industries LLP
-                        </p>
-                        <p className="text-[12.5px] text-[#555555]">
-                          Industrial Tooling &amp; Injection Moulding Works, Maharashtra, India
-                        </p>
+                        <a
+                          href={mapsSearchUrl(keralaUnit)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block hover:text-[#E51E2A] transition-colors"
+                        >
+                          <span className="block text-[13.5px] font-medium text-[#080808] mt-0.5">
+                            {keralaUnit.name}
+                          </span>
+                          <span className="block text-[12.5px] text-[#555555]">
+                            {keralaUnit.addressLines.join(", ")}, {keralaUnit.locality}, {keralaUnit.region} {keralaUnit.postalCode}
+                          </span>
+                        </a>
+
+                        <span className="block text-[11px] font-bold uppercase tracking-wider text-[#777777] mt-3">
+                          {mumbaiUnit.unit} · Corporate Office, Mumbai
+                        </span>
+                        <a
+                          href={mapsSearchUrl(mumbaiUnit)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block hover:text-[#E51E2A] transition-colors"
+                        >
+                          <span className="block text-[13.5px] font-medium text-[#080808] mt-0.5">
+                            {mumbaiUnit.name}
+                          </span>
+                          <span className="block text-[12.5px] text-[#555555]">
+                            {mumbaiUnit.addressLines.join(", ")}, {mumbaiUnit.locality}, {mumbaiUnit.region} {mumbaiUnit.postalCode}
+                          </span>
+                        </a>
                       </div>
                     </div>
 
@@ -155,10 +240,10 @@ export default function ContactContent() {
                           Inquiries &amp; RFQs
                         </span>
                         <a
-                          href="mailto:inquiry@mahalaxmitools.com"
-                          className="text-[13.5px] font-semibold text-[#080808] hover:text-[#E51E2A] transition-colors mt-0.5 block"
+                          href={`mailto:${keralaUnit.email}`}
+                          className="text-[13.5px] font-semibold text-[#080808] hover:text-[#E51E2A] transition-colors mt-0.5 block break-all"
                         >
-                          inquiry@mahalaxmitools.com
+                          {keralaUnit.email}
                         </a>
                         <span className="text-[11.5px] text-[#777777]">
                           Responses provided within 24 business hours
@@ -176,10 +261,18 @@ export default function ContactContent() {
                           Direct Phone Line
                         </span>
                         <a
-                          href="tel:+912027123456"
+                          href={keralaUnit.phoneHref}
                           className="text-[13.5px] font-semibold text-[#080808] hover:text-[#E51E2A] transition-colors mt-0.5 block"
                         >
-                          +91 (0) 20 2712 3456
+                          {keralaUnit.phoneDisplay}{" "}
+                          <span className="font-normal text-[#777777]">(Kerala)</span>
+                        </a>
+                        <a
+                          href={mumbaiUnit.phoneHref}
+                          className="text-[13.5px] font-semibold text-[#080808] hover:text-[#E51E2A] transition-colors block"
+                        >
+                          {mumbaiUnit.phoneDisplay}{" "}
+                          <span className="font-normal text-[#777777]">(Mumbai)</span>
                         </a>
                         <span className="text-[11.5px] text-[#777777]">
                           Mon - Sat: 8:30 AM - 6:30 PM IST
@@ -209,7 +302,7 @@ export default function ContactContent() {
                   {/* WhatsApp Quick Inquiry Button */}
                   <div className="mt-6">
                     <a
-                      href="https://wa.me/?text=Hello%20Mahalaxmi%20Tools%20Team%2C%20I%20would%20like%20to%20discuss%20a%20manufacturing%20requirement."
+                      href={whatsappUrl("Hello Mahalaxmi Tools Team, I would like to discuss a manufacturing requirement.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-[14px] font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-[4px] transition-colors shadow-xs group cursor-pointer"
@@ -252,7 +345,7 @@ export default function ContactContent() {
                         Inquiry Received Successfully
                       </h4>
                       <p className="mt-2 text-[14px] text-[#555555] max-w-md mx-auto leading-relaxed">
-                        Thank you, <span className="font-semibold text-[#080808]">{formData.fullName}</span>. Our engineering coordination team has logged your requirements regarding <span className="font-semibold text-[#080808]">{formData.subject}</span> and will review the specifications promptly.
+                        Thank you, <span className="font-semibold text-[#080808]">{formData.fullName}</span>. Your inquiry about <span className="font-semibold text-[#080808]">{formData.subject}</span> has opened in WhatsApp. Press send there and our engineering team will review the specifications promptly.
                       </p>
                       <div className="mt-6">
                         <button
@@ -266,6 +359,9 @@ export default function ContactContent() {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                      <Suspense fallback={null}>
+                        <QueryPrefill onPrefill={handlePrefill} />
+                      </Suspense>
                       {/* Full Name */}
                       <div>
                         <label
@@ -485,7 +581,7 @@ export default function ContactContent() {
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-[14px] h-[2px] bg-[#E51E2A]" />
                     <span className="text-[11px] font-bold text-[#E51E2A] uppercase tracking-wider">
-                      WORKS LOCATION
+                      KERALA WORKS · {keralaUnit.unit.toUpperCase()}
                     </span>
                   </div>
                   <h3 className="text-[20px] font-bold text-[#080808]">
@@ -500,8 +596,8 @@ export default function ContactContent() {
               {/* Styled Maps Interactive Frame */}
               <div className="w-full h-[360px] sm:h-[420px] rounded-[6px] border border-[#E5E5E5] overflow-hidden shadow-xs relative bg-neutral-100">
                 <iframe
-                  title="Mahalaxmi Tools & Plastic Industries Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0471115598!2d73.79292677273909!3d18.524545043516597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d082e33!2sMaharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  title="Mahalaxmi Tools & Plastic Industries, Cherthala, Kerala on Google Maps"
+                  src={mapsEmbedUrl(keralaUnit)}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

@@ -69,7 +69,7 @@ export default function Services() {
               direction="up"
               duration={750}
               delay={idx * 150}
-              className="w-full"
+              className={`w-full ${idx === activeIndex ? "" : "hidden md:block"}`}
             >
               <div className="group relative rounded-[4px] overflow-hidden h-[380px] sm:h-[420px] w-full bg-neutral-900 border border-[#E5E5E5] shadow-xs flex flex-col justify-end">
                 {/* Background Image with Lazy Loading */}
@@ -99,10 +99,10 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Controls Row: Red Navigation Arrows + Divider Line + View All Services */}
+        {/* Controls Row: Red Navigation Arrows (mobile slider) + Divider Line + View All Services */}
         <ScrollReveal direction="up" duration={600} delay={300}>
           <div className="mt-10 pt-4 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 md:hidden">
               <button
                 onClick={handlePrev}
                 type="button"

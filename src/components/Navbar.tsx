@@ -71,7 +71,7 @@ export default function Navbar() {
 
           {/* Centered Desktop Navigation */}
           <nav
-            className="hidden md:flex items-center justify-center space-x-9"
+            className="hidden md:flex items-center justify-center space-x-5 lg:space-x-9"
             aria-label="Main Navigation"
           >
             {navLinks.map((link) => {

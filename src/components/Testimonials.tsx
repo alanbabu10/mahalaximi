@@ -58,7 +58,7 @@ export default function Testimonials() {
               direction={item.direction}
               duration={800}
               delay={idx * 150}
-              className="w-full flex"
+              className={`w-full ${idx === activeIndex ? "flex" : "hidden md:flex"}`}
             >
               <div className="bg-white border border-[#E5E5E5] rounded-[4px] p-6 sm:p-7 shadow-2xs flex flex-col sm:flex-row gap-5 sm:gap-6 items-start w-full">
                 {/* Client Photo with Lazy Loading */}
@@ -95,7 +95,7 @@ export default function Testimonials() {
 
         {/* Slider Controls Row */}
         <ScrollReveal direction="up" duration={600} delay={200}>
-          <div className="mt-10 pt-4 flex items-center justify-between gap-4">
+          <div className="mt-10 pt-4 flex items-center justify-between gap-4 md:hidden">
             <div className="flex items-center gap-2">
               <button
                 onClick={handlePrev}

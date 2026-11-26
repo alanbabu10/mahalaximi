@@ -198,7 +198,7 @@ export default function AboutPage() {
                     Our Mission
                   </h3>
                   <p className="mt-4 text-[14.5px] leading-relaxed text-[#555555]">
-                    To engineer and deliver precision-moulded components, high-grade tools, and dies that empower industrial manufacturers with exceptional dimensional quality, zero-defect consistency, and reliable production uptime.
+                    To deliver state-of-the-art dies, molds, and tool engineering solutions that empower clients to manufacture with precision and efficiency.
                   </p>
                 </div>
 
@@ -223,7 +223,7 @@ export default function AboutPage() {
                     Our Vision
                   </h3>
                   <p className="mt-4 text-[14.5px] leading-relaxed text-[#555555]">
-                    To be recognized as a premier, technologically advanced industrial manufacturing and tooling partner, setting industry benchmarks in precision engineering, durable tooling solutions, and dependable customer partnerships.
+                    To become a trusted name across India (and beyond) for advanced tooling &amp; die work, with sustainable practices and innovation at our core.
                   </p>
                 </div>
 
@@ -286,7 +286,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. Why Choose Mahalakshmi & In-House Toolroom */}
+      {/* 6. Why Choose Mahalaxmi & In-House Toolroom */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[#FAFAFA] border-b border-[#E5E5E5] overflow-hidden">
         <div className="max-w-[1150px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -340,7 +340,7 @@ export default function AboutPage() {
                   <div className="rounded-[4px] overflow-hidden border border-[#E5E5E5] bg-white shadow-xs">
                     <Image
                       src="/images/why-cnc-machining.png"
-                      alt="CNC Vertical Machining center at Mahalakshmi"
+                      alt="CNC vertical machining centre at Mahalaxmi"
                       width={480}
                       height={600}
                       loading="lazy"

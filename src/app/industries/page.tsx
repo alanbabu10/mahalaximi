@@ -48,7 +48,7 @@ export default function IndustriesPage() {
       id: "plumbing-sanitary",
       title: "Plumbing & Sanitary Components",
       description:
-        "Robust plastic components designed for longlasting plumbing and sanitary performance. Manufactured to resist hydrostatic pressure, chemical corrosion, and thermal cycling over extended operating lifetimes.",
+        "Robust plastic components designed for long-lasting plumbing and sanitary performance. Manufactured to resist hydrostatic pressure, chemical corrosion, and thermal cycling over extended operating lifetimes.",
       image: "/images/ind-plumbing.png",
       icon: Droplet,
       typicalParts: [
@@ -63,7 +63,7 @@ export default function IndustriesPage() {
       id: "household-goods",
       title: "Household Goods",
       description:
-        "Reliable moulded components designed for modern consumer and household applications. Balancing structural durability with clean cosmetic aesthetics and ergonomic ergonomics.",
+        "Reliable moulded components designed for modern consumer and household applications. Balancing structural durability with clean cosmetic aesthetics and comfortable, ergonomic design.",
       image: "/images/ind-household.png",
       icon: HomeIcon,
       typicalParts: [

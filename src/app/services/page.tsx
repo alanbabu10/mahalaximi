@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import ReadyBanner from "@/components/ReadyBanner";
 import ScrollReveal from "@/components/ScrollReveal";
+import ProductsGallery from "@/components/ProductsGallery";
 
 export const metadata: Metadata = {
   title: "Manufacturing Services & Capabilities | Mahalaxmi Tools & Plastic Industries LLP",
@@ -22,6 +23,18 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+const serviceList = [
+  "Injection Moulds",
+  "Blow Moulds",
+  "PET Moulds",
+  "Injection Moulding",
+  "Blow Moulding",
+  "PET Moulding",
+  "Vertical Moulding",
+  "CNC Machining",
+  "Precision Tool Manufacturing",
+];
 
 export default function ServicesPage() {
   const services = [
@@ -199,7 +212,45 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 4. Equipment & Machinery Fleet Reference Section */}
+      {/* 4. Complete Service List */}
+      <section className="py-16 sm:py-20 bg-[#FAFAFA] border-b border-[#E5E5E5] overflow-hidden">
+        <div className="max-w-[1150px] mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="down" duration={600}>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-[18px] h-[2px] bg-[#E51E2A]" />
+              <span className="text-[12px] font-semibold text-[#777777] uppercase tracking-wider">
+                WHAT WE DO
+              </span>
+            </div>
+
+            <div className="text-center max-w-[620px] mx-auto mb-10 sm:mb-12">
+              <h2 className="text-[30px] sm:text-[38px] font-bold text-[#080808] tracking-tight">
+                Our Services
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {serviceList.map((item, idx) => (
+              <li key={item}>
+                <ScrollReveal direction="up" duration={700} delay={(idx % 3) * 80}>
+                  <div className="h-full p-4 sm:p-5 bg-white border border-[#E5E5E5] rounded-[4px] shadow-xs hover:border-[#E51E2A] transition-colors flex items-center gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-[#E51E2A] flex-shrink-0" />
+                    <span className="text-[14px] font-semibold text-[#080808]">
+                      {item}
+                    </span>
+                  </div>
+                </ScrollReveal>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 5. Our Products Gallery */}
+      <ProductsGallery className="border-b border-[#E5E5E5]" />
+
+      {/* 6. Equipment & Machinery Fleet Reference Section */}
       <section className="py-16 sm:py-20 bg-[#FAFAFA] border-b border-[#E5E5E5] overflow-hidden">
         <div className="max-w-[1150px] mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="down" duration={600}>
@@ -257,10 +308,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 5. Ready To Work With Us CTA */}
+      {/* 7. Ready To Work With Us CTA */}
       <ReadyBanner />
 
-      {/* 6. Global Footer */}
+      {/* 8. Global Footer */}
       <Footer />
     </main>
   );

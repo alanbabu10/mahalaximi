@@ -14,7 +14,7 @@ export default function Industries() {
     {
       title: "Plumbing & Sanitary Components",
       description:
-        "Robust plastic components designed for longlasting plumbing and sanitary performance",
+        "Robust plastic components designed for long-lasting plumbing and sanitary performance",
       image: "/images/ind-plumbing.png",
       direction: "right" as const,
     },
