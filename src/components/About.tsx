@@ -69,7 +69,7 @@ export default function About() {
                   />
                   <div className="text-[13px] leading-tight">
                     <span className="block text-[#555555]">Trusted by</span>
-                    <span className="block font-semibold text-[#080808]">105 business</span>
+                    <span className="block font-semibold text-[#080808]">105+ business partners</span>
                   </div>
                 </div>
               </div>

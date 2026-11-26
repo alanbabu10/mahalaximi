@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import FloatingContact from "@/components/FloatingContact";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Mahalaxmi Tools & Plastic Industries | Precision Manufacturing Solutions",
   description:
-    "A considered approach to engineering, precision injection molding, tooling, and industrial manufacturing solutions.",
+    "Mahalaxmi Tools & Plastic Industries LLP, Cherthala, Kerala: injection, blow and PET moulds, moulding and CNC machining, with a built capacity of up to 40 moulds per month.",
   keywords: [
     "Mahalaxmi Tools",
     "Plastic Industries",
@@ -48,6 +49,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-white text-[#080808] font-sans antialiased selection:bg-[#E51E2A] selection:text-white">
         {children}
+        <FloatingContact />
       </body>
     </html>
   );

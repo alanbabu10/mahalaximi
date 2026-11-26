@@ -10,7 +10,7 @@ export default function WhyChooseUs() {
           <div className="flex items-center gap-2 mb-4">
             <div className="w-[18px] h-[2px] bg-[#E51E2A]" />
             <span className="text-[12px] font-medium text-[#777777]">
-              Why Chose Us
+              Why Choose Us
             </span>
           </div>
 

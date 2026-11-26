@@ -7,7 +7,9 @@ import {
   Eye,
   ShieldCheck,
   Award,
-  Cpu,
+  Users,
+  Lightbulb,
+  Clock,
   CheckCircle2,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -31,28 +33,34 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const coreValues = [
     {
-      icon: Target,
-      title: "Precision Engineering",
+      icon: Users,
+      title: "Customer Centric",
       description:
-        "Rigorous adherence to micron-level tolerances and product specifications across all tooling, mould, and component manufacturing.",
+        "We put our customers first by understanding their needs and delivering solutions that exceed expectations.",
+    },
+    {
+      icon: Lightbulb,
+      title: "Innovation",
+      description:
+        "We embrace new technologies and creative approaches to stay ahead in the tools and die industry.",
     },
     {
       icon: ShieldCheck,
-      title: "Integrity & Confidentiality",
+      title: "Integrity",
       description:
-        "Every client design, mould specification, and proprietary product concept is treated under strict non-disclosure protections.",
-    },
-    {
-      icon: Cpu,
-      title: "Technological Advancement",
-      description:
-        "Continuous investment in cutting-edge machinery including Milacron servo injection moulders, HAAS, and BFW CNC machining centers.",
+        "We conduct business with honesty, transparency, and fairness at every stage.",
     },
     {
       icon: Award,
-      title: "Reliable Quality Delivery",
+      title: "Quality",
       description:
-        "Stringent multi-stage quality inspections from raw material verification to finished component dispatch.",
+        "We maintain strict quality standards to ensure precision, durability, and reliability in every product.",
+    },
+    {
+      icon: Clock,
+      title: "Reliability",
+      description:
+        "We deliver consistent results with on-time service, making us a trusted partner for our clients.",
     },
   ];
 
@@ -141,7 +149,7 @@ export default function AboutPage() {
                 </p>
 
                 <p className="mt-3.5 text-[15px] leading-[1.65] text-[#555555]">
-                  Our facility operates an integrated ecosystem where design engineering, CNC toolroom machining, spark erosion EDM, and high-tonnage injection moulding unite under one roof to deliver consistent, dependable results.
+                  Our state-of-the-art facility has a built capacity of up to 40 moulds per month. With a comprehensive OEM setup, we offer end-to-end solutions covering mould design, CNC toolroom machining, spark erosion EDM, and injection, PET, and blow moulding under one roof.
                 </p>
 
                 {/* Social Proof Metric */}
@@ -198,7 +206,7 @@ export default function AboutPage() {
                     Our Mission
                   </h3>
                   <p className="mt-4 text-[14.5px] leading-relaxed text-[#555555]">
-                    To engineer and deliver precision-moulded components, high-grade tools, and dies that empower industrial manufacturers with exceptional dimensional quality, zero-defect consistency, and reliable production uptime.
+                    To deliver state-of-the-art dies, molds, and tool engineering solutions that empower clients to manufacture with precision and efficiency.
                   </p>
                 </div>
 
@@ -223,7 +231,7 @@ export default function AboutPage() {
                     Our Vision
                   </h3>
                   <p className="mt-4 text-[14.5px] leading-relaxed text-[#555555]">
-                    To be recognized as a premier, technologically advanced industrial manufacturing and tooling partner, setting industry benchmarks in precision engineering, durable tooling solutions, and dependable customer partnerships.
+                    To become a trusted name across India (and beyond) for advanced tooling &amp; die work, with sustainable practices and innovation at our core.
                   </p>
                 </div>
 
@@ -258,7 +266,7 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {coreValues.map((val, idx) => {
               const Icon = val.icon;
               return (
@@ -286,7 +294,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. Why Choose Mahalakshmi & In-House Toolroom */}
+      {/* 6. Why Choose Mahalaxmi & In-House Toolroom */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[#FAFAFA] border-b border-[#E5E5E5] overflow-hidden">
         <div className="max-w-[1150px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -340,7 +348,7 @@ export default function AboutPage() {
                   <div className="rounded-[4px] overflow-hidden border border-[#E5E5E5] bg-white shadow-xs">
                     <Image
                       src="/images/why-cnc-machining.png"
-                      alt="CNC Vertical Machining center at Mahalakshmi"
+                      alt="CNC vertical machining centre at Mahalaxmi"
                       width={480}
                       height={600}
                       loading="lazy"

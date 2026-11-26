@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactContent from "@/components/ContactContent";
+import Locations from "@/components/Locations";
 
 export const metadata: Metadata = {
   title: "Contact Us | Mahalaxmi Tools & Plastic Industries LLP",
@@ -24,7 +25,10 @@ export default function ContactPage() {
       {/* 2. Interactive Contact Form & Facility Information */}
       <ContactContent />
 
-      {/* 3. Global Footer */}
+      {/* 3. Our Locations (Mumbai & Kerala units) */}
+      <Locations />
+
+      {/* 4. Global Footer */}
       <Footer />
     </main>
   );
