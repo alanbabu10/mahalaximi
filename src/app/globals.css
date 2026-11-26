@@ -189,3 +189,65 @@ body {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
+
+/* Products marquee (home page) - same motion as the client logo strip */
+.product-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.product-marquee-track {
+  display: flex;
+  width: max-content;
+  padding: 4px 0;
+  animation: client-marquee 70s linear infinite;
+}
+
+.product-marquee:hover .product-marquee-track,
+.product-marquee:focus-within .product-marquee-track {
+  animation-play-state: paused;
+}
+
+.product-marquee-row {
+  display: flex;
+  gap: 1rem;
+  padding-right: 1rem;
+  margin: 0;
+  list-style: none;
+}
+
+.product-marquee-item {
+  flex: none;
+  width: 150px;
+  height: 150px;
+}
+
+@media (min-width: 640px) {
+  .product-marquee-row {
+    gap: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .product-marquee-item {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .product-marquee-track {
+    animation: none;
+    padding-left: 1rem;
+  }
+
+  .product-marquee-row[aria-hidden="true"] {
+    display: none;
+  }
+}

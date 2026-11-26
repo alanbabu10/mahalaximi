@@ -5,7 +5,7 @@ import Services from "@/components/Services";
 import Machinery from "@/components/Machinery";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Industries from "@/components/Industries";
-import ProductsGallery from "@/components/ProductsGallery";
+import ProductsMarquee from "@/components/ProductsMarquee";
 import Process from "@/components/Process";
 import ClientLogos from "@/components/ClientLogos";
 import Testimonials from "@/components/Testimonials";
@@ -66,13 +66,8 @@ export default function Home() {
       {/* 7. Industries We Serve */}
       <Industries />
 
-      {/* 7b. Our Products (preview, full gallery on /products) */}
-      <ProductsGallery
-        id="our-products"
-        limit={6}
-        viewAllHref="/products"
-        className="border-t border-[#E5E5E5]"
-      />
+      {/* 7b. Our Products (auto-scrolling strip, full gallery on /products) */}
+      <ProductsMarquee />
 
       {/* 8. Manufacturing Process */}
       <Process />
