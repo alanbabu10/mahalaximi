@@ -10,7 +10,6 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import ReadyBanner from "@/components/ReadyBanner";
 import ScrollReveal from "@/components/ScrollReveal";
-import ProductsGallery from "@/components/ProductsGallery";
 
 export const metadata: Metadata = {
   title: "Manufacturing Services & Capabilities | Mahalaxmi Tools & Plastic Industries LLP",
@@ -247,10 +246,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 5. Our Products Gallery */}
-      <ProductsGallery className="border-b border-[#E5E5E5]" />
-
-      {/* 6. Equipment & Machinery Fleet Reference Section */}
+      {/* 5. Equipment & Machinery Fleet Reference Section */}
       <section className="py-16 sm:py-20 bg-[#FAFAFA] border-b border-[#E5E5E5] overflow-hidden">
         <div className="max-w-[1150px] mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="down" duration={600}>
@@ -308,10 +304,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 7. Ready To Work With Us CTA */}
+      {/* 6. Ready To Work With Us CTA */}
       <ReadyBanner />
 
-      {/* 8. Global Footer */}
+      {/* 7. Global Footer */}
       <Footer />
     </main>
   );

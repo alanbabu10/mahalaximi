@@ -9,6 +9,7 @@ interface ProductsGalleryProps {
   limit?: number;
   viewAllHref?: string;
   className?: string;
+  showHeading?: boolean;
 }
 
 export default function ProductsGallery({
@@ -16,6 +17,7 @@ export default function ProductsGallery({
   limit,
   viewAllHref,
   className = "",
+  showHeading = true,
 }: ProductsGalleryProps) {
   const items = limit ? products.slice(0, limit) : products;
 
@@ -25,6 +27,7 @@ export default function ProductsGallery({
       className={`py-16 sm:py-20 lg:py-24 bg-white overflow-hidden scroll-mt-24 ${className}`}
     >
       <div className="max-w-[1150px] mx-auto px-4 sm:px-6 lg:px-8">
+        {showHeading && (
         <ScrollReveal direction="down" duration={600}>
           <div className="flex items-center gap-2 mb-3">
             <div className="w-[18px] h-[2px] bg-[#E51E2A]" />
@@ -42,6 +45,7 @@ export default function ProductsGallery({
             </p>
           </div>
         </ScrollReveal>
+        )}
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[900px] mx-auto">
           {items.map((product, idx) => (

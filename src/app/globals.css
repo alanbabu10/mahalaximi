@@ -105,3 +105,87 @@ body {
     display: none;
   }
 }
+
+/* Prakash Group animated logo (above the footer) */
+.pg-logo {
+  position: relative;
+  aspect-ratio: 640 / 356;
+}
+
+.pg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.pg-ray {
+  transform-origin: 72.8% 54.1%;
+}
+
+.pg-line {
+  transform-origin: 9% 50%;
+}
+
+.pg-logo[data-state="idle"] .pg-layer {
+  opacity: 0;
+}
+
+.pg-logo[data-state="play"] .pg-line {
+  animation: pg-line-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.pg-logo[data-state="play"] .pg-word {
+  animation: pg-word-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.pg-logo[data-state="play"] .pg-group {
+  animation: pg-group-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+.pg-logo[data-state="play"] .pg-ray {
+  animation:
+    pg-ray-in 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) calc(0.9s + var(--i) * 70ms) both,
+    pg-ray-glow 3.6s ease-in-out calc(2.4s + var(--i) * 140ms) infinite;
+}
+
+@keyframes pg-line-in {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes pg-word-in {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes pg-group-in {
+  from { opacity: 0; transform: translateY(8%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pg-ray-in {
+  from { opacity: 0; transform: scale(0.15) rotate(-35deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+/* Gentle, continuous flicker of the rays after the intro */
+@keyframes pg-ray-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.82; transform: scale(1.045); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-logo .pg-layer {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Machinery slider: autoplay progress bar on the active thumbnail */
+@keyframes machinery-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}

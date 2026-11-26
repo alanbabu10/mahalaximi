@@ -7,7 +7,9 @@ import {
   Eye,
   ShieldCheck,
   Award,
-  Cpu,
+  Users,
+  Lightbulb,
+  Clock,
   CheckCircle2,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -31,28 +33,34 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const coreValues = [
     {
-      icon: Target,
-      title: "Precision Engineering",
+      icon: Users,
+      title: "Customer Centric",
       description:
-        "Rigorous adherence to micron-level tolerances and product specifications across all tooling, mould, and component manufacturing.",
+        "We put our customers first by understanding their needs and delivering solutions that exceed expectations.",
+    },
+    {
+      icon: Lightbulb,
+      title: "Innovation",
+      description:
+        "We embrace new technologies and creative approaches to stay ahead in the tools and die industry.",
     },
     {
       icon: ShieldCheck,
-      title: "Integrity & Confidentiality",
+      title: "Integrity",
       description:
-        "Every client design, mould specification, and proprietary product concept is treated under strict non-disclosure protections.",
-    },
-    {
-      icon: Cpu,
-      title: "Technological Advancement",
-      description:
-        "Continuous investment in cutting-edge machinery including Milacron servo injection moulders, HAAS, and BFW CNC machining centers.",
+        "We conduct business with honesty, transparency, and fairness at every stage.",
     },
     {
       icon: Award,
-      title: "Reliable Quality Delivery",
+      title: "Quality",
       description:
-        "Stringent multi-stage quality inspections from raw material verification to finished component dispatch.",
+        "We maintain strict quality standards to ensure precision, durability, and reliability in every product.",
+    },
+    {
+      icon: Clock,
+      title: "Reliability",
+      description:
+        "We deliver consistent results with on-time service, making us a trusted partner for our clients.",
     },
   ];
 
@@ -141,7 +149,7 @@ export default function AboutPage() {
                 </p>
 
                 <p className="mt-3.5 text-[15px] leading-[1.65] text-[#555555]">
-                  Our facility operates an integrated ecosystem where design engineering, CNC toolroom machining, spark erosion EDM, and high-tonnage injection moulding unite under one roof to deliver consistent, dependable results.
+                  Our state-of-the-art facility has a built capacity of up to 40 moulds per month. With a comprehensive OEM setup, we offer end-to-end solutions covering mould design, CNC toolroom machining, spark erosion EDM, and injection, PET, and blow moulding under one roof.
                 </p>
 
                 {/* Social Proof Metric */}
@@ -258,7 +266,7 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {coreValues.map((val, idx) => {
               const Icon = val.icon;
               return (

@@ -17,7 +17,7 @@ export type Location = {
 
 function mapsQuery(loc: Location) {
   return encodeURIComponent(
-    [loc.name, ...loc.addressLines, `${loc.locality}, ${loc.region} ${loc.postalCode}`].join(", ")
+    [...loc.addressLines, `${loc.locality}, ${loc.region} ${loc.postalCode}`].join(", ")
   );
 }
 

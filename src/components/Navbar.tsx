@@ -24,6 +24,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
+    { name: "Products", href: "/products" },
     { name: "Industries", href: "/industries" },
     { name: "Contact", href: "/contact" },
   ];
@@ -60,7 +61,7 @@ export default function Navbar() {
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform"
                 />
               </div>
-              <span className="font-bold text-[16px] sm:text-[17px] text-[#080808] tracking-tight leading-tight hidden sm:block">
+              <span className="font-bold text-[16px] sm:text-[17px] text-[#080808] tracking-tight leading-tight hidden sm:block md:hidden lg:block">
                 MAHALAXMI
                 <span className="text-[#E51E2A] block text-[11px] font-semibold tracking-wider uppercase">
                   Tools &amp; Plastics

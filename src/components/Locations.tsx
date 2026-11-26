@@ -128,14 +128,6 @@ export default function Locations({ className = "" }: { className?: string }) {
             className="lg:col-span-5 flex"
           >
             <div className="bg-white border border-[#E5E5E5] rounded-[6px] p-6 sm:p-7 shadow-xs hover:border-[#E51E2A] transition-colors flex flex-col w-full">
-              <Image
-                src="/images/laxmi-die-works-logo.png"
-                alt="Laxmi Die Works logo"
-                width={176}
-                height={74}
-                loading="lazy"
-                className="h-12 w-auto object-contain mb-5 self-start"
-              />
               <LocationDetails loc={mumbaiUnit} />
             </div>
           </ScrollReveal>

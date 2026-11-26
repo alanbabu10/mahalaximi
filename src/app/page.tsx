@@ -9,9 +9,8 @@ import ProductsGallery from "@/components/ProductsGallery";
 import Process from "@/components/Process";
 import ClientLogos from "@/components/ClientLogos";
 import Testimonials from "@/components/Testimonials";
-import Locations from "@/components/Locations";
+import OfficeShowcase from "@/components/OfficeShowcase";
 import { locations } from "@/data/company";
-import ContactCTA from "@/components/ContactCTA";
 import ReadyBanner from "@/components/ReadyBanner";
 import Footer from "@/components/Footer";
 
@@ -67,11 +66,11 @@ export default function Home() {
       {/* 7. Industries We Serve */}
       <Industries />
 
-      {/* 7b. Our Products (preview, full gallery on /services) */}
+      {/* 7b. Our Products (preview, full gallery on /products) */}
       <ProductsGallery
         id="our-products"
         limit={6}
-        viewAllHref="/services#products"
+        viewAllHref="/products"
         className="border-t border-[#E5E5E5]"
       />
 
@@ -84,16 +83,13 @@ export default function Home() {
       {/* 10. Client Testimonials */}
       <Testimonials />
 
-      {/* 11. Our Locations (Mumbai & Kerala units) */}
-      <Locations />
+      {/* 11. Our Facility (Kerala works photo; both units on /contact) */}
+      <OfficeShowcase />
 
-      {/* 12. Let's Talk Requirements (Navy Inquiry Section) */}
-      <ContactCTA />
-
-      {/* 13. Ready to Work With Us Banner */}
+      {/* 12. Ready to Work With Us Banner */}
       <ReadyBanner />
 
-      {/* 14. Navy Blue Footer */}
+      {/* 13. Navy Blue Footer */}
       <Footer />
     </main>
   );
